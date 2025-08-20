@@ -1,0 +1,21 @@
+image_dir: /Users/paniga1/vampire_image_processing/test_images/FlexTop
+video_mp4: /Users/paniga1/vampire_image_processing/test_images/VAMPIRE_FlexTop.mp4
+base_image_dir: /Users/paniga1/vampire_image_processing/test_images/FlexTop/Img000001.tif
+save_mesh_overlays: True
+overlay_dir: /Users/paniga1/vampire_image_processing/test_images/FlexTop_mesh_overlays
+metrics_dir: /Users/paniga1/vampire_image_processing/test_images/FlexTop_metrics
+
+# [Segment Anything (SAM) Configurations]
+segment_anything_dir: /Users/paniga1/vampire_image_processing/segment_anything
+sam_checkpoint: /Users/paniga1/vampire_image_processing/segment_anything/segment_anything/sam_vit_h_4b8939.pth
+model_type: vit_h
+
+# [Mesh and Apparatus Configurations]
+bounding_box_meshes: [2, 98, 638, 144] # (pixels)
+fixture_bounding_box: [0, 65, 639, 167] # (pixels)
+fps: 30
+mm_per_pixel: 0.2 # mm/pixel
+min_area: 500 # min area of a gel mesh to be considered valid (pixels)
+max_area: 1080 # max area of a gel segment to be considered valid (pixels)
+vert_known_width: 5 # (mm)
+top_area_known: 196.24 # (mm^2)
