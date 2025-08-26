@@ -1,4 +1,4 @@
-# README — Gel Tracking & Volume Estimation Pipeline
+# Gel Tracking & Volume Estimation Pipeline
 
 This repository contains a Python pipeline that loads images from a directory, detects gel meshes, tracks their position/area/volume over time **and** computes those metrics relative to a moving test fixture. It also ships helper utilities for one-time pre-processing (bounding boxes, mm↔px calibration, FPS estimation) and rich visualizations (overlays, per-gel plots, and movies).
 
@@ -6,7 +6,7 @@ This repository contains a Python pipeline that loads images from a directory, d
 
 ## Highlights
 
-* **Robust gel detection** using \[Segment Anything (SAM)] with post-filtering inside a user-defined ROI.
+* **Gel detection** using \[Segment Anything (SAM)] with post-filtering inside a user-defined ROI.
 * **Per-gel tracking** (left→right association per frame) with centroid, area, and an estimated volume.
 * **Fixture-relative metrics** via automatic detection of a vertical white stripe inside a fixture ROI.
 * **Physical units** (mm, mm², mm³) using your mm/pixel calibration.
@@ -164,6 +164,8 @@ Result: a per-image ordered list of gel masks.
 
 This gives a fixture-relative “cursor” so you can analyze gel metrics as a function of fixture position, not just time.
 
+<img width="1189" height="422" alt="Img000156_overlay" src="https://github.com/user-attachments/assets/ef252be8-8cc3-40d7-89eb-276b635e60e7" />
+
 ### 3) Point tracking & metrics
 
 For each gel mask:
@@ -220,10 +222,14 @@ python OBJECT_DETECTION.py -c config.yaml
 * **Per-gel composite images**
 
   * `overlay_dir/per_gel_all_time_meshes/gel_<k>_all_time_meshes.png` — all timepoint silhouettes colored & blended.
+ 
+<img width="2177" height="737" alt="image" src="https://github.com/user-attachments/assets/d093e360-c74d-4a6d-a929-0af4878cd176" />
 
 * **Per-gel videos**
 
   * `overlay_dir/per_gel_videos/gel_<k>_motion_current.mp4` — evolution over time (or `trail` mode if selected).
+
+https://github.com/user-attachments/assets/96ed037c-5353-4295-927d-4670376eaff1
 
 * **Plots**
 
@@ -231,6 +237,12 @@ python OBJECT_DETECTION.py -c config.yaml
 
     * **vs. time**: centroid X, area (mm²), volume (mm³)
     * **vs. fixture position (mm)**: same metrics against `Position (mm)`
+   
+<img width="3300" height="1400" alt="image" src="https://github.com/user-attachments/assets/2ec72542-7a40-4aaf-a650-fcb7018d135e" />
+
+<img width="3300" height="1400" alt="image" src="https://github.com/user-attachments/assets/2b16c55b-c2f0-416d-a449-c05e501aee15" />
+
+<img width="3300" height="1400" alt="image" src="https://github.com/user-attachments/assets/de81c513-7a9e-4646-8197-7a7b3062fb1c" />
 
 ---
 
