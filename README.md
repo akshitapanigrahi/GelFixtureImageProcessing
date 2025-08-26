@@ -316,7 +316,7 @@ config.yaml                # your scene configuration
 
 ---
 
-## Reproducibility Checklist
+## Reproducibility
 
 * Freeze `config.yaml` alongside outputs.
 * Log the SAM checkpoint path & version.
@@ -328,18 +328,5 @@ config.yaml                # your scene configuration
 ## Acknowledgments
 
 * **Segment Anything** model by Meta AI (SAM) is used for automatic mask generation.
-
----
-
-## FAQ
-
-**Q:** My overlays show labels but no stripe.
-**A:** Ensure `fixture_bounding_box` spans the vertical stripe, not the gels. If contrast is low, try slightly different lighting equalization or tweak the `min_prominence` parameter in `find_first_white_stripe_x()`.
-
-**Q:** Areas/volumes seem tiny/huge.
-**A:** Re-run `get_mm_px.py`; verify the **5 mm** span or update `vert_known_width` to the correct known distance. Small mm/pixel errors cubic-amplify in volume.
-
-**Q:** Gels flicker between IDs.
-**A:** Tighten `bounding_box_meshes` to exclude stray masks and keep gels well separated. If gels cross, a simple left→right identity may break—consider augmenting with temporal association if needed.
 
 ---
